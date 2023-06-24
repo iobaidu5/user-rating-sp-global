@@ -1,0 +1,146 @@
+@import './theme.scss';
+
+
+.rating {
+
+    &-main {
+        display: flex;
+        justify-content: center;
+        padding: 5rem 0;
+        width: 100%;
+        max-width: 100%;
+    }
+}
+
+.star {
+    position: relative;
+
+    &-container {
+        margin: auto;
+        width: 50rem;
+        height: 50rem;
+        padding: 10px;
+        position: relative;
+    }
+
+    &-icon {
+        font-size: 5rem;
+        cursor: pointer;
+
+        @include themify($themes) {
+            color: themed('starNotSelectedColor');
+        }
+    }
+
+    &-render {
+        display: flex;
+        justify-content: center;
+    }
+
+    &-rating {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        align-items: center;
+    }
+
+    &-input {
+        position: relative;
+        font-family: 'Poppins', serif;
+        background: transparent;
+        border: 0;
+        outline: none;
+        border: 1px solid var(--color-primary) !important;
+        padding: 2rem 1rem;
+        display: block;
+        width: 100%;
+        max-width: 100%;
+        font-size: 1.6rem;
+        font-weight: 400;
+        line-height: 1.5;
+        margin-top: 2rem;
+        border-radius: 1rem;
+
+        @include themify($themes) {
+            color: themed('textColor');
+        }
+
+        &-label {
+            font-family: 'Poppins', serif;
+            font-size: 1.6rem;
+            position: absolute;
+            top: 10%;
+            left: -20rem;
+            transform: translateY(-50%);
+            color: #888;
+            pointer-events: none;
+            transition: transform 0.3s ease;
+
+            @media only screen and (max-width: 990px) {
+              top: 0;
+              left: 30%;
+            }
+        }
+
+        &:focus {
+            outline: none;
+            border-color: var(--color-primary);
+            box-shadow: 0 0 5px var(--color-primary-hover);
+        }
+    }
+}
+
+.error-message {
+  font-family: 'Poppins', serif;
+  color: red;
+  font-size: 2rem;
+  transition: all .5s ease-in-out;
+  padding: .5rem 0;
+}
+
+.star.filled,
+.star.hovered {
+
+    @include themify($themes) {
+        color: themed('starColor');
+    }
+}
+
+.star.half-filled {
+    position: relative;
+    display: inline-block;
+
+    @include themify($themes) {
+        color: themed('starColor');
+    }
+}
+
+.star.half-filled:before {
+    content: '★';
+    position: absolute;
+    left: 0;
+    overflow: hidden;
+    width: 100%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    z-index: 1;
+
+    @include themify($themes) {
+        background: themed('starColor');
+        background: themed('starBackground');
+    }
+}
+
+.star.half-filled:after {
+    content: '☆';
+    position: absolute;
+    left: 50%;
+    overflow: hidden;
+    width: 20%;
+    z-index: 0;
+
+    @include themify($themes) {
+        color: themed('starColor');
+        color: themed('starBackground');
+    }
+}
