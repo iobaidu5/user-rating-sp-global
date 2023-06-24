@@ -26,6 +26,10 @@
     &-icon {
         font-size: 5rem;
         cursor: pointer;
+
+        @include themify($themes) {
+            color: themed('starNotSelectedColor');
+        }
     }
 
     &-render {
@@ -96,22 +100,19 @@
 
 .star.filled,
 .star.hovered {
-    color: var(--color-primary);
+  
 
     @include themify($themes) {
         color: themed('starColor');
-        color: themed('starBackgound');
     }
 }
 
 .star.half-filled {
-    color: var(--color-primary);
     position: relative;
     display: inline-block;
 
     @include themify($themes) {
         color: themed('starColor');
-        color: themed('starBackgound');
     }
 }
 
@@ -121,13 +122,13 @@
     left: 0;
     overflow: hidden;
     width: 100%;
-    background: linear-gradient(to right, #f1c40f 50%, #fff 50%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     z-index: 1;
 
     @include themify($themes) {
-        color: themed('starBackgound');
+        background: themed('starBackground');
+        -webkit-background-clip: text;
     }
 }
 
@@ -141,6 +142,6 @@
     z-index: 0;
 
     @include themify($themes) {
-        color: themed('starBackgound');
+        color: themed('starColor');
     }
 }
